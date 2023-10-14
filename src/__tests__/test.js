@@ -1,17 +1,5 @@
-import Character from '../js/character.js';
-import Daemon from '../js/daemon.js';
-
-test('Should throw an error because of invalid name ', () => {
-  expect(() => {
-    new Character('A', 'Daemon');
-  }).toThrow('incorrect name');
-});
-
-test('should throw an error because of invalid type', () => {
-  expect(() => {
-    new Character('Anna', 123);
-  }).toThrow('Invalid type');
-});
+import Character from '../js/character';
+import Daemon from '../js/daemon';
 
 let character;
 
@@ -26,4 +14,15 @@ it('create new character', () => {
   expect(character.level).toBe(1);
   expect(character.attack).toBe(10);
   expect(character.defence).toBe(40);
+});
+test('Should throw an error because of invalid name ', () => {
+  expect(() => {
+    character = new Character('A', 'Daemon');
+  }).toThrow('incorrect name');
+});
+
+test('should throw an error because of invalid type', () => {
+  expect(() => {
+    character = new Character('Anna', 123);
+  }).toThrow('Invalid type');
 });

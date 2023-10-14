@@ -1,11 +1,5 @@
 export default class Character {
   constructor(name, type) {
-    this.name = name;
-    this.type = type;
-    this.health = 100;
-    this.level = 1;
-    this.attack = null;
-    this.defence = null;
     const types = [
       'Bowman',
       'Swordsman',
@@ -14,17 +8,21 @@ export default class Character {
       'Undead',
       'Zombie',
     ];
-    const searchedEl = this.type;
-    function findEl(element) {
-      return element === searchedEl;
-    }
-    const actualType = types.find(findEl);
-
-    if (typeof this.type !== 'string' || !actualType) {
+    if (typeof type !== 'string' || !types.includes(type)) {
       throw new Error('Invalid type');
     }
-    if (this.name.length < 2 || this.name.length > 10) {
+
+    if (name.length < 2 || name.length > 10) {
       throw new Error('incorrect name');
     }
+
+    this.name = name;
+    this.type = type;
+
+    this.health = 100;
+    this.level = 1;
+
+    this.attack = undefined;
+    this.defence = undefined;
   }
 }
